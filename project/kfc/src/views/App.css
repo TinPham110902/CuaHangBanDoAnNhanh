@@ -37,7 +37,13 @@
     transform: rotate(360deg);
   }
 }
-
 .Nav-bar {
   position: fixed;
+}
+.form{
+ display: flex;
+ margin-left: 30px;
+}
+.input-nv{
+  width: 1000px;
 }
