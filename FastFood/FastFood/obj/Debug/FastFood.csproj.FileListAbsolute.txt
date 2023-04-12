@@ -77,3 +77,7 @@ C:\Users\quynh\source\repos\CuaHangBanDoAnNhanh\FastFood\FastFood\obj\Debug\Fast
 C:\Users\quynh\source\repos\CuaHangBanDoAnNhanh\FastFood\FastFood\obj\Debug\FastFood.csproj.CopyComplete
 C:\Users\quynh\source\repos\CuaHangBanDoAnNhanh\FastFood\FastFood\obj\Debug\FastFood.dll
 C:\Users\quynh\source\repos\CuaHangBanDoAnNhanh\FastFood\FastFood\obj\Debug\FastFood.pdb
+D:\WEB\FastFoodClone\FastFood\FastFood\obj\Debug\FastFood.csproj.AssemblyReference.cache
+D:\WEB\FastFoodClone\FastFood\FastFood\obj\Debug\FastFood.csproj.CoreCompileInputs.cache
+D:\WEB\FastFoodClone\FastFood\FastFood\obj\Debug\FastFood.dll
+D:\WEB\FastFoodClone\FastFood\FastFood\obj\Debug\FastFood.pdb
