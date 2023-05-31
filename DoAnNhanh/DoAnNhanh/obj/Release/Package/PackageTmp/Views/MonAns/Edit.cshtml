@@ -1,0 +1,91 @@
+﻿@model DoAnNhanh.Models.MonAn
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "MonAns", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Món Ăn</h4>
+        <hr />
+        <table>
+            <tr>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.MaMa)
+                <div class="form-group">
+                    <label class="form-control">Tên món ăn</label>
+                    <div class="col-md-10">
+                        <input type="text" value=@Model.TenMa class="form-control" name="TenMa" />
+
+                        @Html.ValidationMessageFor(model => model.TenMa, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </tr>
+            <tr>
+                <div class="form-group">
+                    <label class="form-control">Số lượng</label>
+                    <div class="col-md-10">
+
+
+                        @Html.EditorFor(model => model.Sl, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Sl, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </tr>
+
+
+            <div class="form-group">
+                <label class="form-control">Đơn giá</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Gia, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Gia, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-control">Mã khuyến mãi</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("MaKm", null, "")
+                    @Html.ValidationMessageFor(model => model.MaKm, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Loại</label>
+
+                <div class="col-md-10">
+
+                    @{ Html.RenderAction("ChooseMaLoai", "MonAns");}
+
+                    @Html.ValidationMessageFor(model => model.MaLoai, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Hinh, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+
+                    <img src="@Url.Content(Model.Hinh)" style="height:200px; width:200px;" id="previewimage" />
+                    <input type="file" name="ImageUpload"  onchange="ShowImagePreview(this,document.getElementById('previewimage'))" />
+                    @Html.ValidationMessageFor(model => model.Hinh, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </table>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Edit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,867 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FoodWebNcModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Combo">
+          <Key>
+            <PropertyRef Name="MaCb" />
+          </Key>
+          <Property Name="MaCb" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenCb" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TongTien" Type="int" Nullable="false" />
+          <Property Name="Hinh" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CT_Combo">
+          <Key>
+            <PropertyRef Name="Macb" />
+            <PropertyRef Name="MaMa" />
+          </Key>
+          <Property Name="Macb" Type="int" Nullable="false" />
+          <Property Name="MaMa" Type="int" Nullable="false" />
+          <Property Name="sl" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CT_HD">
+          <Key>
+            <PropertyRef Name="MaHd" />
+            <PropertyRef Name="MaMa" />
+          </Key>
+          <Property Name="MaHd" Type="int" Nullable="false" />
+          <Property Name="MaMa" Type="int" Nullable="false" />
+          <Property Name="Sl" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CT_Menu">
+          <Key>
+            <PropertyRef Name="MaMenu" />
+            <PropertyRef Name="MaMa" />
+            <PropertyRef Name="MaCombo" />
+          </Key>
+          <Property Name="MaMenu" Type="int" Nullable="false" />
+          <Property Name="MaMa" Type="int" Nullable="false" />
+          <Property Name="MaCombo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HoaDon">
+          <Key>
+            <PropertyRef Name="MaHd" />
+          </Key>
+          <Property Name="MaHd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ngay" Type="datetime" Nullable="false" />
+          <Property Name="Tk" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="MaKm" Type="int" />
+          <Property Name="MaCb" Type="int" />
+          <Property Name="ThanhTien" Type="int" />
+        </EntityType>
+        <EntityType Name="KhuyenMai">
+          <Key>
+            <PropertyRef Name="MaKm" />
+          </Key>
+          <Property Name="MaKm" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenKm" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Loai">
+          <Key>
+            <PropertyRef Name="MaLoai" />
+          </Key>
+          <Property Name="MaLoai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenLoai" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log_login">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="datetime" />
+          <Property Name="Logout" Type="datetime" />
+          <Property Name="TK" Type="char" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MaMenu" />
+          </Key>
+          <Property Name="MaMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ngay" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MonAn">
+          <Key>
+            <PropertyRef Name="MaMa" />
+          </Key>
+          <Property Name="MaMa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenMa" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sl" Type="int" Nullable="false" />
+          <Property Name="Gia" Type="int" Nullable="false" />
+          <Property Name="MaKm" Type="int" />
+          <Property Name="MaLoai" Type="int" Nullable="false" />
+          <Property Name="Hinh" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Quyen">
+          <Key>
+            <PropertyRef Name="MaQuyen" />
+          </Key>
+          <Property Name="MaQuyen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenQuyen" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tk">
+          <Key>
+            <PropertyRef Name="Tk" />
+          </Key>
+          <Property Name="Tk" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Mk" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="MaQuyen" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__CT_Combo__Macb__37A5467C">
+          <End Role="Combo" Type="Self.Combo" Multiplicity="1" />
+          <End Role="CT_Combo" Type="Self.CT_Combo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Combo">
+              <PropertyRef Name="MaCb" />
+            </Principal>
+            <Dependent Role="CT_Combo">
+              <PropertyRef Name="Macb" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CT_Combo__MaMa__38996AB5">
+          <End Role="MonAn" Type="Self.MonAn" Multiplicity="1" />
+          <End Role="CT_Combo" Type="Self.CT_Combo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonAn">
+              <PropertyRef Name="MaMa" />
+            </Principal>
+            <Dependent Role="CT_Combo">
+              <PropertyRef Name="MaMa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CT_HD__MaHd__398D8EEE">
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+          <End Role="CT_HD" Type="Self.CT_HD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoaDon">
+              <PropertyRef Name="MaHd" />
+            </Principal>
+            <Dependent Role="CT_HD">
+              <PropertyRef Name="MaHd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CT_HD__MaMa__3A81B327">
+          <End Role="MonAn" Type="Self.MonAn" Multiplicity="1" />
+          <End Role="CT_HD" Type="Self.CT_HD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonAn">
+              <PropertyRef Name="MaMa" />
+            </Principal>
+            <Dependent Role="CT_HD">
+              <PropertyRef Name="MaMa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CT_Menu__MaCombo__4222D4EF">
+          <End Role="Combo" Type="Self.Combo" Multiplicity="1" />
+          <End Role="CT_Menu" Type="Self.CT_Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Combo">
+              <PropertyRef Name="MaCb" />
+            </Principal>
+            <Dependent Role="CT_Menu">
+              <PropertyRef Name="MaCombo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CT_Menu__MaMa__3B75D760">
+          <End Role="MonAn" Type="Self.MonAn" Multiplicity="1" />
+          <End Role="CT_Menu" Type="Self.CT_Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonAn">
+              <PropertyRef Name="MaMa" />
+            </Principal>
+            <Dependent Role="CT_Menu">
+              <PropertyRef Name="MaMa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CT_Menu__MaMenu__3C69FB99">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+          <End Role="CT_Menu" Type="Self.CT_Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="MaMenu" />
+            </Principal>
+            <Dependent Role="CT_Menu">
+              <PropertyRef Name="MaMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDon__MaCb__3D5E1FD2">
+          <End Role="Combo" Type="Self.Combo" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Combo">
+              <PropertyRef Name="MaCb" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="MaCb" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDon__MaKm__3E52440B">
+          <End Role="KhuyenMai" Type="Self.KhuyenMai" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhuyenMai">
+              <PropertyRef Name="MaKm" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="MaKm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDon__Tk__3F466844">
+          <End Role="Tk" Type="Self.Tk" Multiplicity="1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tk">
+              <PropertyRef Name="Tk" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="Tk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MonAn__MaLoai__403A8C7D">
+          <End Role="Loai" Type="Self.Loai" Multiplicity="1" />
+          <End Role="MonAn" Type="Self.MonAn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Loai">
+              <PropertyRef Name="MaLoai" />
+            </Principal>
+            <Dependent Role="MonAn">
+              <PropertyRef Name="MaLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tk__MaQuyen__412EB0B6">
+          <End Role="Quyen" Type="Self.Quyen" Multiplicity="1" />
+          <End Role="Tk" Type="Self.Tk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quyen">
+              <PropertyRef Name="MaQuyen" />
+            </Principal>
+            <Dependent Role="Tk">
+              <PropertyRef Name="MaQuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Log_login_Tk">
+          <End Role="Tk" Type="Self.Tk" Multiplicity="0..1" />
+          <End Role="Log_login" Type="Self.Log_login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tk">
+              <PropertyRef Name="Tk" />
+            </Principal>
+            <Dependent Role="Log_login">
+              <PropertyRef Name="TK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FoodWebNcModelStoreContainer">
+          <EntitySet Name="Combo" EntityType="Self.Combo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CT_Combo" EntityType="Self.CT_Combo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CT_HD" EntityType="Self.CT_HD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CT_Menu" EntityType="Self.CT_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhuyenMai" EntityType="Self.KhuyenMai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Loai" EntityType="Self.Loai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log_login" EntityType="Self.Log_login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MonAn" EntityType="Self.MonAn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quyen" EntityType="Self.Quyen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tk" EntityType="Self.Tk" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CT_Combo__Macb__37A5467C" Association="Self.FK__CT_Combo__Macb__37A5467C">
+            <End Role="Combo" EntitySet="Combo" />
+            <End Role="CT_Combo" EntitySet="CT_Combo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CT_Combo__MaMa__38996AB5" Association="Self.FK__CT_Combo__MaMa__38996AB5">
+            <End Role="MonAn" EntitySet="MonAn" />
+            <End Role="CT_Combo" EntitySet="CT_Combo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CT_HD__MaHd__398D8EEE" Association="Self.FK__CT_HD__MaHd__398D8EEE">
+            <End Role="HoaDon" EntitySet="HoaDon" />
+            <End Role="CT_HD" EntitySet="CT_HD" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CT_HD__MaMa__3A81B327" Association="Self.FK__CT_HD__MaMa__3A81B327">
+            <End Role="MonAn" EntitySet="MonAn" />
+            <End Role="CT_HD" EntitySet="CT_HD" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CT_Menu__MaCombo__4222D4EF" Association="Self.FK__CT_Menu__MaCombo__4222D4EF">
+            <End Role="Combo" EntitySet="Combo" />
+            <End Role="CT_Menu" EntitySet="CT_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CT_Menu__MaMa__3B75D760" Association="Self.FK__CT_Menu__MaMa__3B75D760">
+            <End Role="MonAn" EntitySet="MonAn" />
+            <End Role="CT_Menu" EntitySet="CT_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CT_Menu__MaMenu__3C69FB99" Association="Self.FK__CT_Menu__MaMenu__3C69FB99">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="CT_Menu" EntitySet="CT_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDon__MaCb__3D5E1FD2" Association="Self.FK__HoaDon__MaCb__3D5E1FD2">
+            <End Role="Combo" EntitySet="Combo" />
+            <End Role="HoaDon" EntitySet="HoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDon__MaKm__3E52440B" Association="Self.FK__HoaDon__MaKm__3E52440B">
+            <End Role="KhuyenMai" EntitySet="KhuyenMai" />
+            <End Role="HoaDon" EntitySet="HoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDon__Tk__3F466844" Association="Self.FK__HoaDon__Tk__3F466844">
+            <End Role="Tk" EntitySet="Tk" />
+            <End Role="HoaDon" EntitySet="HoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MonAn__MaLoai__403A8C7D" Association="Self.FK__MonAn__MaLoai__403A8C7D">
+            <End Role="Loai" EntitySet="Loai" />
+            <End Role="MonAn" EntitySet="MonAn" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tk__MaQuyen__412EB0B6" Association="Self.FK__Tk__MaQuyen__412EB0B6">
+            <End Role="Quyen" EntitySet="Quyen" />
+            <End Role="Tk" EntitySet="Tk" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Log_login_Tk" Association="Self.FK_Log_login_Tk">
+            <End Role="Tk" EntitySet="Tk" />
+            <End Role="Log_login" EntitySet="Log_login" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FoodWebNcModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Combo">
+          <Key>
+            <PropertyRef Name="MaCb" />
+          </Key>
+          <Property Name="MaCb" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenCb" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TongTien" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CT_Combo" Relationship="Self.FK__CT_Combo__Macb__37A5467C" FromRole="Combo" ToRole="CT_Combo" />
+          <NavigationProperty Name="CT_Menu" Relationship="Self.FK__CT_Menu__MaCombo__4222D4EF" FromRole="Combo" ToRole="CT_Menu" />
+          <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__MaCb__3D5E1FD2" FromRole="Combo" ToRole="HoaDon" />
+          <Property Name="Hinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CT_Combo">
+          <Key>
+            <PropertyRef Name="Macb" />
+            <PropertyRef Name="MaMa" />
+          </Key>
+          <Property Name="Macb" Type="Int32" Nullable="false" />
+          <Property Name="MaMa" Type="Int32" Nullable="false" />
+          <Property Name="sl" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Combo" Relationship="Self.FK__CT_Combo__Macb__37A5467C" FromRole="CT_Combo" ToRole="Combo" />
+          <NavigationProperty Name="MonAn" Relationship="Self.FK__CT_Combo__MaMa__38996AB5" FromRole="CT_Combo" ToRole="MonAn" />
+        </EntityType>
+        <EntityType Name="CT_HD">
+          <Key>
+            <PropertyRef Name="MaHd" />
+            <PropertyRef Name="MaMa" />
+          </Key>
+          <Property Name="MaHd" Type="Int32" Nullable="false" />
+          <Property Name="MaMa" Type="Int32" Nullable="false" />
+          <Property Name="Sl" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HoaDon" Relationship="Self.FK__CT_HD__MaHd__398D8EEE" FromRole="CT_HD" ToRole="HoaDon" />
+          <NavigationProperty Name="MonAn" Relationship="Self.FK__CT_HD__MaMa__3A81B327" FromRole="CT_HD" ToRole="MonAn" />
+        </EntityType>
+        <EntityType Name="CT_Menu">
+          <Key>
+            <PropertyRef Name="MaMenu" />
+            <PropertyRef Name="MaMa" />
+            <PropertyRef Name="MaCombo" />
+          </Key>
+          <Property Name="MaMenu" Type="Int32" Nullable="false" />
+          <Property Name="MaMa" Type="Int32" Nullable="false" />
+          <Property Name="MaCombo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Combo" Relationship="Self.FK__CT_Menu__MaCombo__4222D4EF" FromRole="CT_Menu" ToRole="Combo" />
+          <NavigationProperty Name="MonAn" Relationship="Self.FK__CT_Menu__MaMa__3B75D760" FromRole="CT_Menu" ToRole="MonAn" />
+          <NavigationProperty Name="Menu" Relationship="Self.FK__CT_Menu__MaMenu__3C69FB99" FromRole="CT_Menu" ToRole="Menu" />
+        </EntityType>
+        <EntityType Name="HoaDon">
+          <Key>
+            <PropertyRef Name="MaHd" />
+          </Key>
+          <Property Name="MaHd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ngay" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Tk" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaKm" Type="Int32" />
+          <Property Name="MaCb" Type="Int32" />
+          <NavigationProperty Name="Combo" Relationship="Self.FK__HoaDon__MaCb__3D5E1FD2" FromRole="HoaDon" ToRole="Combo" />
+          <NavigationProperty Name="CT_HD" Relationship="Self.FK__CT_HD__MaHd__398D8EEE" FromRole="HoaDon" ToRole="CT_HD" />
+          <NavigationProperty Name="KhuyenMai" Relationship="Self.FK__HoaDon__MaKm__3E52440B" FromRole="HoaDon" ToRole="KhuyenMai" />
+          <NavigationProperty Name="Tk1" Relationship="Self.FK__HoaDon__Tk__3F466844" FromRole="HoaDon" ToRole="Tk" />
+          <Property Name="ThanhTien" Type="Int32" />
+        </EntityType>
+        <EntityType Name="KhuyenMai">
+          <Key>
+            <PropertyRef Name="MaKm" />
+          </Key>
+          <Property Name="MaKm" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenKm" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__MaKm__3E52440B" FromRole="KhuyenMai" ToRole="HoaDon" />
+        </EntityType>
+        <EntityType Name="Loai">
+          <Key>
+            <PropertyRef Name="MaLoai" />
+          </Key>
+          <Property Name="MaLoai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenLoai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MonAns" Relationship="Self.FK__MonAn__MaLoai__403A8C7D" FromRole="Loai" ToRole="MonAn" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MaMenu" />
+          </Key>
+          <Property Name="MaMenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ngay" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CT_Menu" Relationship="Self.FK__CT_Menu__MaMenu__3C69FB99" FromRole="Menu" ToRole="CT_Menu" />
+        </EntityType>
+        <EntityType Name="MonAn">
+          <Key>
+            <PropertyRef Name="MaMa" />
+          </Key>
+          <Property Name="MaMa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenMa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sl" Type="Int32" Nullable="false" />
+          <Property Name="Gia" Type="Int32" Nullable="false" />
+          <Property Name="MaKm" Type="Int32" />
+          <Property Name="MaLoai" Type="Int32" Nullable="false" />
+          <Property Name="Hinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CT_Combo" Relationship="Self.FK__CT_Combo__MaMa__38996AB5" FromRole="MonAn" ToRole="CT_Combo" />
+          <NavigationProperty Name="CT_HD" Relationship="Self.FK__CT_HD__MaMa__3A81B327" FromRole="MonAn" ToRole="CT_HD" />
+          <NavigationProperty Name="CT_Menu" Relationship="Self.FK__CT_Menu__MaMa__3B75D760" FromRole="MonAn" ToRole="CT_Menu" />
+          <NavigationProperty Name="Loai" Relationship="Self.FK__MonAn__MaLoai__403A8C7D" FromRole="MonAn" ToRole="Loai" />
+        </EntityType>
+        <EntityType Name="Quyen">
+          <Key>
+            <PropertyRef Name="MaQuyen" />
+          </Key>
+          <Property Name="MaQuyen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenQuyen" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tks" Relationship="Self.FK__Tk__MaQuyen__412EB0B6" FromRole="Quyen" ToRole="Tk" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tk">
+          <Key>
+            <PropertyRef Name="Tk1" />
+          </Key>
+          <Property Name="Tk1" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Mk" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaQuyen" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__Tk__3F466844" FromRole="Tk" ToRole="HoaDon" />
+          <NavigationProperty Name="Quyen" Relationship="Self.FK__Tk__MaQuyen__412EB0B6" FromRole="Tk" ToRole="Quyen" />
+          <NavigationProperty Name="Log_login" Relationship="FoodWebNcModel.FK_Log_login_Tk" FromRole="Tk" ToRole="Log_login" />
+        </EntityType>
+        <Association Name="FK__CT_Combo__Macb__37A5467C">
+          <End Role="Combo" Type="Self.Combo" Multiplicity="1" />
+          <End Role="CT_Combo" Type="Self.CT_Combo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Combo">
+              <PropertyRef Name="MaCb" />
+            </Principal>
+            <Dependent Role="CT_Combo">
+              <PropertyRef Name="Macb" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CT_Menu__MaCombo__4222D4EF">
+          <End Role="Combo" Type="Self.Combo" Multiplicity="1" />
+          <End Role="CT_Menu" Type="Self.CT_Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Combo">
+              <PropertyRef Name="MaCb" />
+            </Principal>
+            <Dependent Role="CT_Menu">
+              <PropertyRef Name="MaCombo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDon__MaCb__3D5E1FD2">
+          <End Role="Combo" Type="Self.Combo" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Combo">
+              <PropertyRef Name="MaCb" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="MaCb" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CT_Combo__MaMa__38996AB5">
+          <End Role="MonAn" Type="Self.MonAn" Multiplicity="1" />
+          <End Role="CT_Combo" Type="Self.CT_Combo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonAn">
+              <PropertyRef Name="MaMa" />
+            </Principal>
+            <Dependent Role="CT_Combo">
+              <PropertyRef Name="MaMa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CT_HD__MaHd__398D8EEE">
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
+          <End Role="CT_HD" Type="Self.CT_HD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoaDon">
+              <PropertyRef Name="MaHd" />
+            </Principal>
+            <Dependent Role="CT_HD">
+              <PropertyRef Name="MaHd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CT_HD__MaMa__3A81B327">
+          <End Role="MonAn" Type="Self.MonAn" Multiplicity="1" />
+          <End Role="CT_HD" Type="Self.CT_HD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonAn">
+              <PropertyRef Name="MaMa" />
+            </Principal>
+            <Dependent Role="CT_HD">
+              <PropertyRef Name="MaMa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CT_Menu__MaMa__3B75D760">
+          <End Role="MonAn" Type="Self.MonAn" Multiplicity="1" />
+          <End Role="CT_Menu" Type="Self.CT_Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonAn">
+              <PropertyRef Name="MaMa" />
+            </Principal>
+            <Dependent Role="CT_Menu">
+              <PropertyRef Name="MaMa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CT_Menu__MaMenu__3C69FB99">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+          <End Role="CT_Menu" Type="Self.CT_Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="MaMenu" />
+            </Principal>
+            <Dependent Role="CT_Menu">
+              <PropertyRef Name="MaMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDon__MaKm__3E52440B">
+          <End Role="KhuyenMai" Type="Self.KhuyenMai" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhuyenMai">
+              <PropertyRef Name="MaKm" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="MaKm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HoaDon__Tk__3F466844">
+          <End Role="Tk" Type="Self.Tk" Multiplicity="1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tk">
+              <PropertyRef Name="Tk1" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="Tk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MonAn__MaLoai__403A8C7D">
+          <End Role="Loai" Type="Self.Loai" Multiplicity="1" />
+          <End Role="MonAn" Type="Self.MonAn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Loai">
+              <PropertyRef Name="MaLoai" />
+            </Principal>
+            <Dependent Role="MonAn">
+              <PropertyRef Name="MaLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tk__MaQuyen__412EB0B6">
+          <End Role="Quyen" Type="Self.Quyen" Multiplicity="1" />
+          <End Role="Tk" Type="Self.Tk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quyen">
+              <PropertyRef Name="MaQuyen" />
+            </Principal>
+            <Dependent Role="Tk">
+              <PropertyRef Name="MaQuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FoodWebNcEntities6" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Comboes" EntityType="Self.Combo" />
+          <EntitySet Name="CT_Combo" EntityType="Self.CT_Combo" />
+          <EntitySet Name="CT_HD" EntityType="Self.CT_HD" />
+          <EntitySet Name="CT_Menu" EntityType="Self.CT_Menu" />
+          <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
+          <EntitySet Name="KhuyenMais" EntityType="Self.KhuyenMai" />
+          <EntitySet Name="Loais" EntityType="Self.Loai" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="MonAns" EntityType="Self.MonAn" />
+          <EntitySet Name="Quyens" EntityType="Self.Quyen" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tks" EntityType="Self.Tk" />
+          <AssociationSet Name="FK__CT_Combo__Macb__37A5467C" Association="Self.FK__CT_Combo__Macb__37A5467C">
+            <End Role="Combo" EntitySet="Comboes" />
+            <End Role="CT_Combo" EntitySet="CT_Combo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CT_Menu__MaCombo__4222D4EF" Association="Self.FK__CT_Menu__MaCombo__4222D4EF">
+            <End Role="Combo" EntitySet="Comboes" />
+            <End Role="CT_Menu" EntitySet="CT_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDon__MaCb__3D5E1FD2" Association="Self.FK__HoaDon__MaCb__3D5E1FD2">
+            <End Role="Combo" EntitySet="Comboes" />
+            <End Role="HoaDon" EntitySet="HoaDons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CT_Combo__MaMa__38996AB5" Association="Self.FK__CT_Combo__MaMa__38996AB5">
+            <End Role="MonAn" EntitySet="MonAns" />
+            <End Role="CT_Combo" EntitySet="CT_Combo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CT_HD__MaHd__398D8EEE" Association="Self.FK__CT_HD__MaHd__398D8EEE">
+            <End Role="HoaDon" EntitySet="HoaDons" />
+            <End Role="CT_HD" EntitySet="CT_HD" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CT_HD__MaMa__3A81B327" Association="Self.FK__CT_HD__MaMa__3A81B327">
+            <End Role="MonAn" EntitySet="MonAns" />
+            <End Role="CT_HD" EntitySet="CT_HD" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CT_Menu__MaMa__3B75D760" Association="Self.FK__CT_Menu__MaMa__3B75D760">
+            <End Role="MonAn" EntitySet="MonAns" />
+            <End Role="CT_Menu" EntitySet="CT_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CT_Menu__MaMenu__3C69FB99" Association="Self.FK__CT_Menu__MaMenu__3C69FB99">
+            <End Role="Menu" EntitySet="Menus" />
+            <End Role="CT_Menu" EntitySet="CT_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDon__MaKm__3E52440B" Association="Self.FK__HoaDon__MaKm__3E52440B">
+            <End Role="KhuyenMai" EntitySet="KhuyenMais" />
+            <End Role="HoaDon" EntitySet="HoaDons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HoaDon__Tk__3F466844" Association="Self.FK__HoaDon__Tk__3F466844">
+            <End Role="Tk" EntitySet="Tks" />
+            <End Role="HoaDon" EntitySet="HoaDons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MonAn__MaLoai__403A8C7D" Association="Self.FK__MonAn__MaLoai__403A8C7D">
+            <End Role="Loai" EntitySet="Loais" />
+            <End Role="MonAn" EntitySet="MonAns" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tk__MaQuyen__412EB0B6" Association="Self.FK__Tk__MaQuyen__412EB0B6">
+            <End Role="Quyen" EntitySet="Quyens" />
+            <End Role="Tk" EntitySet="Tks" />
+          </AssociationSet>
+          <EntitySet Name="Log_login" EntityType="FoodWebNcModel.Log_login" />
+          <AssociationSet Name="FK_Log_login_Tk" Association="FoodWebNcModel.FK_Log_login_Tk">
+            <End Role="Tk" EntitySet="Tks" />
+            <End Role="Log_login" EntitySet="Log_login" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Log_login">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="DateTime" Precision="3" />
+          <Property Name="Logout" Type="DateTime" Precision="3" />
+          <Property Name="TK" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Tk1" Relationship="FoodWebNcModel.FK_Log_login_Tk" FromRole="Log_login" ToRole="Tk" />
+        </EntityType>
+        <Association Name="FK_Log_login_Tk">
+          <End Type="FoodWebNcModel.Tk" Role="Tk" Multiplicity="0..1" />
+          <End Type="FoodWebNcModel.Log_login" Role="Log_login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tk">
+              <PropertyRef Name="Tk1" />
+            </Principal>
+            <Dependent Role="Log_login">
+              <PropertyRef Name="TK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FoodWebNcModelStoreContainer" CdmEntityContainer="FoodWebNcEntities6">
+          <EntitySetMapping Name="Comboes">
+            <EntityTypeMapping TypeName="FoodWebNcModel.Combo">
+              <MappingFragment StoreEntitySet="Combo">
+                <ScalarProperty Name="Hinh" ColumnName="Hinh" />
+                <ScalarProperty Name="MaCb" ColumnName="MaCb" />
+                <ScalarProperty Name="TenCb" ColumnName="TenCb" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CT_Combo">
+            <EntityTypeMapping TypeName="FoodWebNcModel.CT_Combo">
+              <MappingFragment StoreEntitySet="CT_Combo">
+                <ScalarProperty Name="Macb" ColumnName="Macb" />
+                <ScalarProperty Name="MaMa" ColumnName="MaMa" />
+                <ScalarProperty Name="sl" ColumnName="sl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CT_HD">
+            <EntityTypeMapping TypeName="FoodWebNcModel.CT_HD">
+              <MappingFragment StoreEntitySet="CT_HD">
+                <ScalarProperty Name="MaHd" ColumnName="MaHd" />
+                <ScalarProperty Name="MaMa" ColumnName="MaMa" />
+                <ScalarProperty Name="Sl" ColumnName="Sl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CT_Menu">
+            <EntityTypeMapping TypeName="FoodWebNcModel.CT_Menu">
+              <MappingFragment StoreEntitySet="CT_Menu">
+                <ScalarProperty Name="MaMenu" ColumnName="MaMenu" />
+                <ScalarProperty Name="MaMa" ColumnName="MaMa" />
+                <ScalarProperty Name="MaCombo" ColumnName="MaCombo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoaDons">
+            <EntityTypeMapping TypeName="FoodWebNcModel.HoaDon">
+              <MappingFragment StoreEntitySet="HoaDon">
+                <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+                <ScalarProperty Name="MaHd" ColumnName="MaHd" />
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="Tk" ColumnName="Tk" />
+                <ScalarProperty Name="MaKm" ColumnName="MaKm" />
+                <ScalarProperty Name="MaCb" ColumnName="MaCb" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhuyenMais">
+            <EntityTypeMapping TypeName="FoodWebNcModel.KhuyenMai">
+              <MappingFragment StoreEntitySet="KhuyenMai">
+                <ScalarProperty Name="MaKm" ColumnName="MaKm" />
+                <ScalarProperty Name="TenKm" ColumnName="TenKm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Loais">
+            <EntityTypeMapping TypeName="FoodWebNcModel.Loai">
+              <MappingFragment StoreEntitySet="Loai">
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="FoodWebNcModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="MaMenu" ColumnName="MaMenu" />
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MonAns">
+            <EntityTypeMapping TypeName="FoodWebNcModel.MonAn">
+              <MappingFragment StoreEntitySet="MonAn">
+                <ScalarProperty Name="MaMa" ColumnName="MaMa" />
+                <ScalarProperty Name="TenMa" ColumnName="TenMa" />
+                <ScalarProperty Name="Sl" ColumnName="Sl" />
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="MaKm" ColumnName="MaKm" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="Hinh" ColumnName="Hinh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quyens">
+            <EntityTypeMapping TypeName="FoodWebNcModel.Quyen">
+              <MappingFragment StoreEntitySet="Quyen">
+                <ScalarProperty Name="MaQuyen" ColumnName="MaQuyen" />
+                <ScalarProperty Name="TenQuyen" ColumnName="TenQuyen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="FoodWebNcModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tks">
+            <EntityTypeMapping TypeName="FoodWebNcModel.Tk">
+              <MappingFragment StoreEntitySet="Tk">
+                <ScalarProperty Name="Tk1" ColumnName="Tk" />
+                <ScalarProperty Name="Mk" ColumnName="Mk" />
+                <ScalarProperty Name="MaQuyen" ColumnName="MaQuyen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log_login">
+            <EntityTypeMapping TypeName="FoodWebNcModel.Log_login">
+              <MappingFragment StoreEntitySet="Log_login">
+                <ScalarProperty Name="TK" ColumnName="TK" />
+                <ScalarProperty Name="Logout" ColumnName="Logout" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

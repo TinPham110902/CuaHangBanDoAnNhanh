@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b8b2af34049a42a9aaf397d66cfb79dd" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="FoodWebNcModel.Combo" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodWebNcModel.CT_Combo" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodWebNcModel.CT_HD" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodWebNcModel.CT_Menu" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodWebNcModel.HoaDon" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodWebNcModel.KhuyenMai" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodWebNcModel.Loai" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodWebNcModel.Menu" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodWebNcModel.MonAn" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodWebNcModel.Quyen" Width="1.5" PointX="1.5" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodWebNcModel.sysdiagram" Width="1.5" PointX="7.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodWebNcModel.Tk" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <AssociationConnector Association="FoodWebNcModel.FK__CT_Combo__Macb__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodWebNcModel.FK__CT_Menu__MaCombo__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodWebNcModel.FK__HoaDon__MaCb__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodWebNcModel.FK__CT_Combo__MaMa__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodWebNcModel.FK__CT_HD__MaHd__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodWebNcModel.FK__CT_HD__MaMa__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodWebNcModel.FK__CT_Menu__MaMa__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodWebNcModel.FK__CT_Menu__MaMenu__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodWebNcModel.FK__HoaDon__MaKm__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodWebNcModel.FK__HoaDon__Tk__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodWebNcModel.FK__MonAn__MaLoai__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodWebNcModel.FK__Tk__MaQuyen__412EB0B6" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FoodWebNcModel.Log_login" Width="1.5" PointX="3" PointY="19.5" />
+        <AssociationConnector Association="FoodWebNcModel.FK_Log_login_Tk" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

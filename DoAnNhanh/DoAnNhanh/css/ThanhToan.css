@@ -1,0 +1,133 @@
+﻿body {
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.menu-container {
+    border-radius: 30px;
+    background-color: #ffffff;
+    margin-right: 5px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.menu {
+    /* border-radius: 30px;
+    background-color: #ffffff;
+    width: 70%; */
+   display:grid;
+   grid-template-columns: repeat(auto-fit,minmax(220px,auto));
+   gap:1.5 rem;
+    height: 92%;
+    width: 100%;
+    /* margin-right: 5px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px; */
+}
+
+.manhinhmenu {
+    display: flex;
+    background-color: #ff6a00;
+    height: 705px;
+}
+
+.card-body {
+    background-color: #ff6a00;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    border-radius: 20px;
+    margin-left: 10px;
+    margin-top: 25px;
+    height: 291px;
+    width: 193px;
+}
+
+.card-text {
+    font-size: 18px;
+}
+
+.card-title {
+    font-size: 23px;
+    margin-top: -17px;
+}
+
+.thanhtoan {
+    border-radius: 30px;
+    background-color: #ffffff;
+    width: 50%;
+    height: auto;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chonmonan {
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 25px;
+}
+
+.order {
+    display: flex;
+    margin-left: 10px;
+    justify-content: space-around;
+    width: 90%;
+}
+
+.tenmon {
+    margin-left: 10px;
+    width: 260px;
+}
+
+.so-luong {
+    width: 40px;
+    border-radius: 25px;
+}
+
+.sotien {
+    margin-left: 20px;
+    width: 100px;
+}
+
+.btn-thanhtoan {
+    display: flex;
+}
+
+.barthanhtoan {
+    box-sizing: border-box;
+    background-color: #edeaea;
+    border-radius: 0px 0px 30px 30px;
+    width: 100%;
+    height: 15%;
+}
+
+.tongtien {
+    margin-left: 230px;
+    font-size:40px;
+}
+
+.btn-thanhtoan {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.btn-tt {
+    width: 45%;
+    margin-left: 5px;
+}
+
+img.card-img-top {
+    height: 209px;
+}

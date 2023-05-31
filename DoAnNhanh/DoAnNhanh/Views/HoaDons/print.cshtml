@@ -1,0 +1,108 @@
+﻿@model IEnumerable<DoAnNhanh.Models.CT_HD>
+@using DoAnNhanh.Models
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+}
+
+<div>
+    <h4>HoaDon</h4>
+    <hr />
+    <table class="table">
+        <thead<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="../../admin/admin.css" rel="stylesheet" />
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src="https://kit.fontawesome.com/492cb427cb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/JavaScript.js"></script>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    @*sidebar*@
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Css2/style.css">
+    <style>
+        .mystyle {
+            transform: translateX(-100%);
+        }
+
+        .move {
+            transform: translateX(30px);
+            z-index: 1;
+        }
+
+        .content {
+            transform: translateX(-250px);
+            transform: translateX(-187px);
+        }
+    </style>
+    <script>
+        function myFunction() {
+            var element = document.getElementById("sidebar");
+            element.classList.toggle('mystyle');
+
+            var button = document.getElementById("sidebarCollapse");
+            button.classList.toggle('move');
+
+            var content = document.getElementById("content");
+            content.classList.toggle('content');
+
+        }
+    </script>
+</head>
+<body class="full-color">
+
+<tr>
+                <th>Mã Hóa Đơn:  @ViewBag.mahd </th>
+                <th>Người tạo:   @ViewBag.Tk</th>
+
+            </tr>
+
+        </thead>
+
+    </table>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên sản phẩm</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MonAn.TenMa</td>
+                    <td>@string.Format("{0:#,0}", @item.MonAn.Gia) VND</td>
+                    <td>@item.Sl</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" style="text-align:right">
+                    Tổng:   @string.Format("{0:#,0}", @ViewBag.tongtien) VND
+
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+
+</body>
+</html>

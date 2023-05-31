@@ -1,0 +1,59 @@
+﻿@model IEnumerable<DoAnNhanh.Models.CT_HD>
+@using DoAnNhanh.Models
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+    <div>
+        <h4>HoaDon</h4>
+        <hr />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Mã Hóa Đơn:  @ViewBag.mahd </th>
+                    <th>Người tạo:   @ViewBag.Tk</th>
+
+                </tr>
+
+            </thead>
+           
+        </table>
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.MonAn.TenMa</td>
+                        <td>@string.Format("{0:#,0}", @item.MonAn.Gia) VND</td>
+                        <td>@item.Sl</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5" style="text-align:right">
+                        Tổng:   @string.Format("{0:#,0}", @ViewBag.tongtien) VND
+
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <p>
+
+        @Html.ActionLink("Back to List", "Index")
+    </p>

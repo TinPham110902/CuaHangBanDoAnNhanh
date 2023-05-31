@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DoAnNhanh.Models.Combo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Combo</h2>
+
+<p>
+    @Html.ActionLink("Create New", "ShowToCart","ThemCombo")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenCb)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TongTien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hinh)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenCb)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TongTien)
+            </td>
+            <td>
+                <img src="@Url.Content(item.Hinh)" style="height:150px;width:150px" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaCb }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MaCb }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaCb })
+            </td>
+        </tr>
+    }
+
+</table>

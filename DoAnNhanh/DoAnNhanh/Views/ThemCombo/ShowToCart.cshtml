@@ -1,0 +1,122 @@
+﻿@model DoAnNhanh.Models.Cart
+@using DoAnNhanh.Models
+@{
+    ViewBag.Title = "ShowToCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thêm combo</h2>
+
+
+<div class="row">
+
+    <div class="col-6">
+
+        @{
+            List<MonAn> dsMonAn = ViewBag.DsMonAn;
+        }
+        <div class="row">
+
+            @foreach (var item in dsMonAn)
+            {
+
+                <div class="col-sm-4">
+                    <div class="card" style=" height: 380px;">
+                        <img class="card-img-top" src="@Url.Content(@item.Hinh)" alt="Card image" style=" height: 60%;">
+                        <div class="card-body">
+                            <h4 class="card-title">@Html.DisplayFor(modelItem => item.TenMa)</h4>
+                            <p class="card-text">@string.Format("{0:#,0}", item.Gia) VND</p>
+                            <a href="/ThemCombo/AddToCart/@item.MaMa"> <i class="fa-solid fa-cart-plus"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col-6">
+        Số lượng món ăn : @Html.Action("BagCart", "ThemCombo")|
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Hình</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Tổng </th>
+                    <th>Xóa</th>
+                </tr>
+
+            </thead>
+            @if (Model != null)
+            {
+                <tbody>
+                    @foreach (var item in Model.Items)
+                    {
+
+                        int Gia = (item._shopping_product.Gia);
+
+                        double total = Convert.ToDouble(Gia * item._shopping_quantity);
+
+                        <tr>
+                            <td>@Html.DisplayFor(model => item._shopping_product.TenMa)</td>
+                            <td>
+                                <img src="@Url.Content(item._shopping_product.Hinh)" style="width:100px;height:100px;" />
+                            </td>
+                            <td>
+                                <p class="card-text">@string.Format("{0:#,0}", item._shopping_product.Gia) VND</p>
+                            </td>
+                            <td>
+                                @using (Html.BeginForm("Update_Quantity_Cart", "ThemCombo"))
+                                {
+                                    <input type="hidden" value="@item._shopping_product.MaMa" name="ID_Product" />
+                                    <input type"number" value="@item._shopping_quantity" name="Quantity" />
+                                    <input type="submit" value="Update Quantity" />
+                                }
+
+                            </td>
+                            <td>
+                                Tổng:@string.Format("{0:#,0}", @total) VND
+                            </td>
+                            <td>
+                                <a href="/ThemCombo/RemoveCart/@item._shopping_product.MaMa">Remove</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+                <tfoot>
+                    @using (Html.BeginForm("CheckOut", "ThemCombo"))
+                    {
+                      
+
+
+
+
+
+                            <tr>Tên combo <input type="text" name="TenCb" /> </tr>
+                            <tr>
+                               
+                                <div class="col-md-10">
+
+                                    <img src="@Url.Content(Model.Hinh)" style="height:200px; width:200px;" id="previewimage" />
+                                    <input type="file" name="ImageUpload" onchange="ShowImagePreview(this,document.getElementById('previewimage'))" />
+                                    @Html.ValidationMessageFor(model => model.Hinh, "", new { @class = "text-danger" })
+                                </div>
+                            </tr>
+                            <tr>Số tiền: <input type="number" name="TongTien" /></tr>
+
+                            <tr colspan="5" style="text-align:right"><input type="submit" class="btn btn-success" value="Tạo" /> </tr>
+                           
+                        
+                    }
+                    </tfoot>
+            }
+        </table>
+
+
+
+    </div>
+
+</div>

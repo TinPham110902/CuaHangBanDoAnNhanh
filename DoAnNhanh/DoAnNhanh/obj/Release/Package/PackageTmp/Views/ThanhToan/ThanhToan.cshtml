@@ -1,0 +1,162 @@
+﻿@model IEnumerable<DoAnNhanh.Models.MonAn>
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Thanh toán</title>
+    <link href="~/css/ThanhToan.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/JavaScript.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <div class="tab">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Tất Cả</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Cơm</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Gà</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pizza</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Hamberger</a>
+            </li>
+        </ul>
+    </div>
+    <div class="manhinhmenu">
+        <div class="menu-container">
+            <div class="menu">
+                @foreach (var item in Model)
+                {
+                    
+                        <div class="card">
+                            <div><img class="card-img-top" src="@Url.Content(@item.Hinh)" /></div>
+
+                            <div class="card-body">
+                                <h6 class="card-title">@Html.DisplayFor(modelItem => item.TenMa) </h6>
+                                <p class="card-text">@string.Format("{0:#,0}", item.Gia)</p>
+                               
+                            </div>
+
+                        </div>
+              
+                }
+               
+            </div>
+            <div class="container">
+
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item "><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="thanhtoan">
+            <div class="mhchon">
+                @using(Html.BeginForm("",""))
+                {
+                <div class="chonmonan">
+                   
+                </div>
+                }
+            </div>
+            <div class="barthanhtoan">
+                <div class="tongtien">0</div>
+                <div class="btn-thanhtoan">
+                    <button type="submit" class="btn-tt btn btn-primary btn-buy ">Thanh toán</button>
+                    <button type="button" class="btn-tt btn btn-primary ">Thoát</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+@*
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ThanhToan</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenMa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaLoai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KhuyenMai.MaKm)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenMa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaLoai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KhuyenMai.MaKm)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MaMa }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MaMa }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaMa })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>*@

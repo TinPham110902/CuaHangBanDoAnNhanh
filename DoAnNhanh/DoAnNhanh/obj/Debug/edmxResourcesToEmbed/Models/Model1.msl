@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FoodWebNcModelStoreContainer" CdmEntityContainer="FoodWebNcEntities6">
+    <EntitySetMapping Name="Comboes">
+      <EntityTypeMapping TypeName="FoodWebNcModel.Combo">
+        <MappingFragment StoreEntitySet="Combo">
+          <ScalarProperty Name="Hinh" ColumnName="Hinh" />
+          <ScalarProperty Name="MaCb" ColumnName="MaCb" />
+          <ScalarProperty Name="TenCb" ColumnName="TenCb" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_Combo">
+      <EntityTypeMapping TypeName="FoodWebNcModel.CT_Combo">
+        <MappingFragment StoreEntitySet="CT_Combo">
+          <ScalarProperty Name="Macb" ColumnName="Macb" />
+          <ScalarProperty Name="MaMa" ColumnName="MaMa" />
+          <ScalarProperty Name="sl" ColumnName="sl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_HD">
+      <EntityTypeMapping TypeName="FoodWebNcModel.CT_HD">
+        <MappingFragment StoreEntitySet="CT_HD">
+          <ScalarProperty Name="MaHd" ColumnName="MaHd" />
+          <ScalarProperty Name="MaMa" ColumnName="MaMa" />
+          <ScalarProperty Name="Sl" ColumnName="Sl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_Menu">
+      <EntityTypeMapping TypeName="FoodWebNcModel.CT_Menu">
+        <MappingFragment StoreEntitySet="CT_Menu">
+          <ScalarProperty Name="MaMenu" ColumnName="MaMenu" />
+          <ScalarProperty Name="MaMa" ColumnName="MaMa" />
+          <ScalarProperty Name="MaCombo" ColumnName="MaCombo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoaDons">
+      <EntityTypeMapping TypeName="FoodWebNcModel.HoaDon">
+        <MappingFragment StoreEntitySet="HoaDon">
+          <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+          <ScalarProperty Name="MaHd" ColumnName="MaHd" />
+          <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+          <ScalarProperty Name="Tk" ColumnName="Tk" />
+          <ScalarProperty Name="MaKm" ColumnName="MaKm" />
+          <ScalarProperty Name="MaCb" ColumnName="MaCb" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KhuyenMais">
+      <EntityTypeMapping TypeName="FoodWebNcModel.KhuyenMai">
+        <MappingFragment StoreEntitySet="KhuyenMai">
+          <ScalarProperty Name="MaKm" ColumnName="MaKm" />
+          <ScalarProperty Name="TenKm" ColumnName="TenKm" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loais">
+      <EntityTypeMapping TypeName="FoodWebNcModel.Loai">
+        <MappingFragment StoreEntitySet="Loai">
+          <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+          <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="FoodWebNcModel.Menu">
+        <MappingFragment StoreEntitySet="Menu">
+          <ScalarProperty Name="MaMenu" ColumnName="MaMenu" />
+          <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MonAns">
+      <EntityTypeMapping TypeName="FoodWebNcModel.MonAn">
+        <MappingFragment StoreEntitySet="MonAn">
+          <ScalarProperty Name="MaMa" ColumnName="MaMa" />
+          <ScalarProperty Name="TenMa" ColumnName="TenMa" />
+          <ScalarProperty Name="Sl" ColumnName="Sl" />
+          <ScalarProperty Name="Gia" ColumnName="Gia" />
+          <ScalarProperty Name="MaKm" ColumnName="MaKm" />
+          <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+          <ScalarProperty Name="Hinh" ColumnName="Hinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quyens">
+      <EntityTypeMapping TypeName="FoodWebNcModel.Quyen">
+        <MappingFragment StoreEntitySet="Quyen">
+          <ScalarProperty Name="MaQuyen" ColumnName="MaQuyen" />
+          <ScalarProperty Name="TenQuyen" ColumnName="TenQuyen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="FoodWebNcModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tks">
+      <EntityTypeMapping TypeName="FoodWebNcModel.Tk">
+        <MappingFragment StoreEntitySet="Tk">
+          <ScalarProperty Name="Tk1" ColumnName="Tk" />
+          <ScalarProperty Name="Mk" ColumnName="Mk" />
+          <ScalarProperty Name="MaQuyen" ColumnName="MaQuyen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Log_login">
+      <EntityTypeMapping TypeName="FoodWebNcModel.Log_login">
+        <MappingFragment StoreEntitySet="Log_login">
+          <ScalarProperty Name="TK" ColumnName="TK" />
+          <ScalarProperty Name="Logout" ColumnName="Logout" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

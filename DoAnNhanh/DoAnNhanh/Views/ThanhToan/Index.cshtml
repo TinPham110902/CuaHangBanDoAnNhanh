@@ -1,0 +1,24 @@
+﻿@*@model DoAnNhanh.Models.CT_HD*@
+
+@model IEnumerable<DoAnNhanh.Models.MonAn>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-sm-3" >
+            <div class="card" style=" height: 380px;">
+                <img class="card-img-top" src="@Url.Content(@item.Hinh)" alt="Card image" style=" height: 60%;">
+                <div class="card-body">
+                    <h4 class="card-title">@Html.DisplayFor(modelItem => item.TenMa)</h4>
+                    <p class="card-text">@string.Format("{0:#,0}", item.Gia) VND</p>
+                    <a href="/GioHang/AddToCart/@item.MaMa"> <i class="fa-solid fa-cart-plus"></i> </a>
+                </div>
+            </div>
+        </div>
+    }
+    </div>

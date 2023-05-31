@@ -1,0 +1,49 @@
+﻿@model IEnumerable<DoAnNhanh.Models.Menu>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var ct_menu = ViewBag.MenuDetail;
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Ngày
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngay)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Tên Món Ăn
+            </th>
+        </tr>
+
+        <tr>
+            @foreach (var tenmon in item.CT_Menu)
+            {
+
+
+                <td>
+                    @tenmon.MonAn.TenMa
+                </td>
+            }
+        </tr>
+        
+    }
+
+
+</table>

@@ -1,0 +1,92 @@
+﻿@model IEnumerable<DoAnNhanh.Models.MonAn>
+@using DoAnNhanh.Models
+@using System.Data;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="tab">
+  
+
+    @using (Html.BeginForm())
+    {
+        <b>Search by:</b>
+        List<Loai> Cate = new List<Loai>();
+
+        Cate = ViewBag.Cate;
+
+
+<select name="searchBy" id="cars">
+    <option value="">Tất cả</option>
+    @foreach (var item in Cate)
+    {
+        <option value="@item.TenLoai"
+                @{ if (item.TenLoai == ViewBag.select) { <text> selected="selected" </text>  } }>
+            @item.TenLoai
+            </option>
+
+        }
+
+</select>
+
+        <input type="submit" value="Search" class="btn btn-primary" />
+
+    }
+</div>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           @Html.ActionLink("Tên món ăn", "Index", new {sortOrder=ViewBag.SortByName})
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sl)
+        </th>
+        <th>
+            @Html.ActionLink("Đơn giá", "Index", new { sortOrder = ViewBag.SortByPrice })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Loai.TenLoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaKm)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenMa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sl)
+            </td>
+            <td>
+                @string.Format("{0:#,0}", item.Gia) Đ
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Loai.TenLoai)
+            </td>
+            <td>
+                <img src="@Url.Content(item.Hinh)" style="height:150px;width:150px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaKm)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaMa }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaMa })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<DoAnNhanh.Models.TotalFood>
+@{
+    ViewBag.Title = "Group";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    int rank = 0;
+}
+<h2>Top số lượng món ăn bán chạy nhất</h2>
+<table class="table">
+
+
+    <tr>
+        <td>Rank</td>
+        <th>Mã món ăn</th>
+        <th>Số Lượng</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @{rank = rank + 1;
+                }
+            </td>
+            <td>
+                <div>@item.name</div>
+            </td>
+            <td>
+                <div>@item.TotalFd</div>
+
+            </td>
+        </tr>
+
+
+    }
+
+</table>
+

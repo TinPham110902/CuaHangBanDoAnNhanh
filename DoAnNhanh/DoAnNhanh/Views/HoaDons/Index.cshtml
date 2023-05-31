@@ -1,0 +1,72 @@
+﻿@model IEnumerable<DoAnNhanh.Models.Schedule>
+@using DoAnNhanh.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{ 
+    List<HoaDon> hoadon = ViewBag.HoaDons;
+}
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+        <tr>
+            <th>
+                Ngày
+            </th>
+            <th>
+                Tổng tiền
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in hoadon)
+        {
+            <tr>
+                <td>
+                    @item.Ngay.ToString("dd/MM/yyyy/HH:mm:ss")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThanhTien)
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="@Url.Action("ExportPdf","HoaDons", new { id = item.MaHd })">xuất</a>
+
+                    @Html.ActionLink("Details", "Details", new { id = item.MaHd }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaHd })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+<h2>Doanh thu theo ngày</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+      
+        </tr>
+    }
+
+</table>
+

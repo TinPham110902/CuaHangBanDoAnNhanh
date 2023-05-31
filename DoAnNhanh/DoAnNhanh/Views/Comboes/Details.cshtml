@@ -1,0 +1,39 @@
+﻿@model IEnumerable < DoAnNhanh.Models.CT_Combo>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết combo</h2>
+
+<div>
+
+    <table class="table">
+        <tr>
+            <th>
+                Tên món ăn
+            </th>
+            <th>
+                Số lượng
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MonAn.TenMa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sl)
+                </td>
+               
+            </tr>
+        }
+        </table>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

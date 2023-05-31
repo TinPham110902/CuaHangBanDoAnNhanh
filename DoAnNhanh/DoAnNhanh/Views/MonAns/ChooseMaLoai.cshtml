@@ -1,0 +1,2 @@
+﻿@model DoAnNhanh.Models.Loai
+@Html.DropDownListFor(model => model.MaLoai, new SelectList(Model.LoaiCollection, "MaLoai", "TenLoai","--Select--"))

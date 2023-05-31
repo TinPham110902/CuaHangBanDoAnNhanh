@@ -1,0 +1,79 @@
+﻿@model IEnumerable<DoAnNhanh.Models.HoaDon>
+@using DoAnNhanh.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ngay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThanhTien)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThanhTien)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaHd }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MaHd }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaHd })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div class="form-group">
+    @using (Html.BeginForm())
+    {
+
+        <select name="DoanhThuTheoNgay" id="cars">
+            <option value="">Tất cả</option>
+            @foreach (var item in Model)
+            {
+                <option value="@item.Ngay"}>
+                    @item.Ngay
+                </option>
+
+            }
+
+        </select>
+        <input type="submit"class="btn btn-lg btn-success btn-block" value="TONG" />
+    }
+
+</div>
+
+<div>Doanh thu:@ViewBag.total</div>
+
+
+@*<div>
+    @{
+        if (ViewBag.total != null)
+        {
+            List<HoaDon> danhsach = ViewBag.total;
+
+            foreach (var item in danhsach)
+            {
+                <div>@item.ThanhTien</div>
+            }
+        }
+    }
+</div>
+        *@

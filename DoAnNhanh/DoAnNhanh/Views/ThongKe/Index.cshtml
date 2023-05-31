@@ -1,0 +1,40 @@
+﻿@using DoAnNhanh.Models
+@using System.Data;
+@model IEnumerable<DoAnNhanh.Models.HoaDon>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div class="form-group">
+    @using (Html.BeginForm())
+    {
+
+
+
+
+        <select name="DoanhThuTheoNgay" id="cars">
+            <option value="">Tất cả</option>
+            @foreach (var item in Model)
+            {
+                <option value="@item.Ngay"
+                        @{ if (item.Ngay == ViewBag.select) { <text> selected="selected" </text>  } }>
+                    @item.Ngay
+                </option>
+
+            }
+
+        </select>
+        <input type="submit" name="submit" class="btn btn-lg btn-success btn-block" value="TONG" />
+
+    }
+
+
+
+    <div>
+        Doanh thu: @ViewBag.toal
+    </div>
+
+</div>
